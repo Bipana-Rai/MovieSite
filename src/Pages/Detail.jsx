@@ -1,20 +1,51 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import useFetch from '../utils/useFetch'
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import useFetch from "../utils/useFetch";
+import Topcast from "../components/Topcast";
+import Video from "../components/Video";
+import Similarmovies from "../components/Similarmovies";
+import { Description } from "../components/Description";
+import Recommendation from "../components/Recommendation";
 
 const Detail = () => {
-    const {id} = useParams()
-    const { error, data, loading } = useFetch(`/movie/${id}`)
-    console.log(data)
+  const { id,media } = useParams();
+  
+  const { error, data, loading } = useFetch(`/${media}/${id}`);
+  const { data: cast } = useFetch(`/${media}/${id}/credits`);
+  const { data: video } = useFetch(`/${media}/${id}/videos`);
+  const { data: similar } = useFetch(`/${media}/${id}/similar`);
+  const { data: recommend } = useFetch(`/${media}/${id}/recommendations`);
+
+  // const { data: ratings } = useFetch(`/${media}/${id}/reviews?page=1`);
+ 
+   
+   
+   
+
   return (
     <>
-    <div className='h-[100vh] '>
-        <img className='h-full w-full' src="https://image.tmdb.org/t/p/original/x0pkoGlwWdkzRxgQioD3cUG0awu.jpg " alt="" />
-    </div>
-    
-    <div>Detail {JSON.stringify(data)}</div>
+{/*   
+    <p className="text-white">{cast.crew}</p> */}
+      {loading ? (
+        <p>loading</p>
+      ) : (
+        <>
+          <Description data={data} cast={cast}  />
+          <Topcast cast={cast} />
+          <div className="gap-9 lg:px-12 px-5 py-4 ">
+            <p className="text-white text-4xl">Official Videos</p>
+            <div className="hide-scrollbar flex overflow-x-auto gap-8 ">
+              {video?.results?.map((v) => (
+                <Video key={v.key} url={v.key} name={v.name} />
+              ))}
+            </div>
+          </div>
+          <Similarmovies smovies={similar} title={"Similar Movies"} media={media} />
+          <Recommendation recommend={recommend} media={media} />
+        </>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Detail
+export default Detail;

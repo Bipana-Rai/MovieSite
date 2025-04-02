@@ -1,3 +1,7 @@
+
+body{
+    background-color: #000000;
+}
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
 }
@@ -6,3 +10,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+.boxShadow {
+    box-shadow: inset 0px -150px 350px  rgba(28, 123, 247, 0.315);
+  }

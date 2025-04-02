@@ -1,7 +1,7 @@
 import React from 'react'
 function Footer() {
     return (
-        <footer className='bg-gray-900 py-10 px-5 mt-5'>
+        <footer className='bg-[#000000] py-10 px-5 mt-5'>
             <div className='  flex flex-col items-center text-white'>
                 <div className='flex justify-center  gap-4 lg:w-[40%]  b text-[13px]   '>
                     <a href='#'>Terms Of Use</a>

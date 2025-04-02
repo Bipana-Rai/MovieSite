@@ -13,18 +13,24 @@ const Home = () => {
         if (data && data.results && data.results.length > 0) {
            const randomIndex=Math.floor(Math.random()*data.results.length)
             setBgImage(`${BASE_URL}${data.results[randomIndex].backdrop_path}`);
+           
 
         } else {
             console.error("Backdrop path not found");
         }
     }, [data])
+    // useEffect(()=>{
+    //     console.log(data)
+
+    // },[data])
+    
     
     return (
         <>
             <section className=' lg:px-12 px-5  '>
-                <div className='  relative lg:h-[90vh] h-[60vh]  ' >
-                    <img className=' object-cover w-full h-full' src={bgImage} alt="" />
-                    <div className=' inset-0 text-white text-center absolute flex flex-col justify-center items-center bg-[#00000f9a] h-full '>
+                <div className='  relative lg:h-[90vh] h-[60vh] bg-[#695222] ' >
+                    <img className=' object-cover w-full h-full rounded-xl p-1' src={bgImage} alt="" />
+                    <div className=' inset-0 text-white text-center absolute flex flex-col justify-center items-center bg-[#00000079]  h-full '>
                         <div className='w-80 md:w-full'>
                             <p className='lg:text-3xl text-xl'>Welcome</p>
                             <p className='lg:text-xl text-s'>Millions of movies, TV shows and people to discover. Explore now.</p>
