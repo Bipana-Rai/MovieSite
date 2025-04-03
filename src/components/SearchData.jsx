@@ -5,8 +5,8 @@ const SearchData = ({data,media}) => {
   return (
     <section className="lg:px-12 px-5  ">
     <div className="grid grid-cols-3 lg:grid-cols-5  py-3  whitespace-nowrap gap-4 ">
-      {data?.map((item) => (
-        <Card data={item} fromsearch={true} media={media}/>
+      {data?.map((item,i) => (
+        <Card data={item} fromsearch={true} media={media} key={i}/>
       ))}
     </div>
   </section>

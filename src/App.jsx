@@ -1,8 +1,4 @@
-// import React from 'react'
-import Home from './components/Home'
-import Navbar from './components/Navbar'
-import MultipleGrid from './components/MultipleGrid'
-import Footer from './components/Footer'
+
 import "./App.css"
 import { Route, Routes } from 'react-router-dom'
 import LandingPage from './Pages/LandingPage'
@@ -24,7 +20,6 @@ const App = () => {
           <Route path='/search/:query' element={<SearchResult/>}></Route>
           <Route path='/:media/:id' element={<Detail />}></Route>
         </Route>
-        <Route path='/login' element={<div>login</div>}></Route>
       </Routes>
      
     </>

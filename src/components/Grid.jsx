@@ -34,7 +34,7 @@ function Grid({
       </div>
       <div className="hide-scrollbar flex gap-3 py-3 overflow-x-auto whitespace-nowrap">
         {data?.results?.map((item) => (
-          <Card data={item} media={media} />
+          <Card data={item} media={media} loading={loading} />
         ))}
       </div>
     </section>

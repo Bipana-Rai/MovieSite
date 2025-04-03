@@ -6,31 +6,24 @@ import Video from "../components/Video";
 import Similarmovies from "../components/Similarmovies";
 import { Description } from "../components/Description";
 import Recommendation from "../components/Recommendation";
+import Spinner from "../Loaders/Spinner";
 
 const Detail = () => {
-  const { id,media } = useParams();
-  
+  const { id, media } = useParams();
+
   const { error, data, loading } = useFetch(`/${media}/${id}`);
   const { data: cast } = useFetch(`/${media}/${id}/credits`);
   const { data: video } = useFetch(`/${media}/${id}/videos`);
   const { data: similar } = useFetch(`/${media}/${id}/similar`);
   const { data: recommend } = useFetch(`/${media}/${id}/recommendations`);
 
-  // const { data: ratings } = useFetch(`/${media}/${id}/reviews?page=1`);
- 
-   
-   
-   
-
   return (
     <>
-{/*   
-    <p className="text-white">{cast.crew}</p> */}
       {loading ? (
-        <p>loading</p>
+        <Spinner />
       ) : (
         <>
-          <Description data={data} cast={cast}  />
+          <Description data={data} cast={cast} />
           <Topcast cast={cast} />
           <div className="gap-9 lg:px-12 px-5 py-4 ">
             <p className="text-white text-4xl">Official Videos</p>
@@ -40,7 +33,11 @@ const Detail = () => {
               ))}
             </div>
           </div>
-          <Similarmovies smovies={similar} title={"Similar Movies"} media={media} />
+          <Similarmovies
+            smovies={similar}
+            title={"Similar Movies"}
+            media={media}
+          />
           <Recommendation recommend={recommend} media={media} />
         </>
       )}
