@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../utils/useFetch";
 import { useInView } from "react-intersection-observer";
 import Categories from "./Categories";
-import Sorting from "./Sorting";
-import Spinner from "../Loaders/Spinner";
 import { useParams } from "react-router-dom";
+import SearchData from "./SearchData";
+import CardSkeleton from "../Loaders/CardSkeleton";
 
 const MoviesList = () => {
   const { query } = useParams();
@@ -12,36 +12,44 @@ const MoviesList = () => {
   const [allData, setAlldata] = useState([]);
   const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const[sortBy,setSortBy]=useState(null)
-  const { data, loading } = useFetch(`/discover/${query}?page=${page}&sort_by=${sortBy}`);
+  const [sortBy, setSortBy] = useState(null);
+  const sortParam = sortBy ? `&sort_by=${sortBy}` : "";
+  const genreParam = selectedCategory ? `&with_genres=${selectedCategory}` : "";
+  const { data, loading } = useFetch(
+    `/discover/${query}?page=${page}${sortParam}${genreParam}`
+  );
+
   useEffect(() => {
     if (data && inView) {
       setAlldata((prevData) => [...prevData, ...data?.results]);
       setPage((prev) => prev + 1);
     }
-  }, [data,inView,sortBy]);
+  }, [data, sortBy,loading]);
+  useEffect(() => {
+    if (inView && !loading) {
+      setPage((prev) => prev + 1);
+    }
+  }, [inView]);
+
   useEffect(() => {
     setAlldata([]);
     setPage(1);
-  }, [query,sortBy]);
-  
-  
+  }, [query, sortBy, selectedCategory]);
+
   return (
     <>
-      <Categories setSelectedCategory={setSelectedCategory} setSortBy={setSortBy} media={query} />
-      {loading && allData.length === 0 ? (
-        <Spinner />
+      <Categories
+        setSelectedCategory={setSelectedCategory}
+        setSortBy={setSortBy}
+        media={query}
+      />
+      {loading && allData?.length === 0 ? (
+        <CardSkeleton />
       ) : (
-        <Sorting
-          allData={allData}
-          selectedCategory={selectedCategory}
-          sortBy={sortBy}
-          inView={inView}
-          ref={ref}
-          media={query}
-          fromSearch={false}
-          page={page}
-        />
+        <div>
+          <SearchData data={allData} media={query} />
+          <button ref={ref}>Load more</button>
+        </div>
       )}
     </>
   );

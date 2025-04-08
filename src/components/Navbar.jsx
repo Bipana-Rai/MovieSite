@@ -12,8 +12,8 @@ const Navbar = () => {
   };
   return (
     <header className="relative lg:px-12 px-5 mt-3 ">
-      <nav className="bg-[#6464642c] flex justify-between py-3 px-3 text-white">
-        <div className="lg:text-3xl text-2xl  text-transparent bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text font-bold">
+      <nav className="bg-[#6464642c] flex justify-between py-3 px-3 text-white shadow-[0px_1px_8px_0px_#4a5568]">
+        <div className="lg:text-3xl text-xl  text-transparent bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text font-bold">
           <p className="cursor-pointer" onClick={() => navigate("/")}>
             {" "}
             WatchVerse

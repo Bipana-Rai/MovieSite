@@ -6,7 +6,8 @@ import Video from "../components/Video";
 import Similarmovies from "../components/Similarmovies";
 import { Description } from "../components/Description";
 import Recommendation from "../components/Recommendation";
-import Spinner from "../Loaders/Spinner";
+import Skeleton from "../Loaders/Skeleton";
+
 
 const Detail = () => {
   const { id, media } = useParams();
@@ -16,12 +17,17 @@ const Detail = () => {
   const { data: video } = useFetch(`/${media}/${id}/videos`);
   const { data: similar } = useFetch(`/${media}/${id}/similar`);
   const { data: recommend } = useFetch(`/${media}/${id}/recommendations`);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+  
 
 
   return (
     <>
       {loading ? (
-        <Spinner />
+        <Skeleton/>
       ) : (
         <>
           <Description data={data} cast={cast} />

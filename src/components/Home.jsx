@@ -15,10 +15,7 @@ const Home = () => {
       console.error("Backdrop path not found");
     }
   }, [data]);
-  // useEffect(()=>{
-  //     console.log(data)
-
-  // },[data])
+  
 
   return (
     <>

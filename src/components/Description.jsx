@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import Ratings from "./Ratings";
 import Plot from "./Plot";
 import DetailBackground from "./DetailBackground";
+import img from '../images/default_poster.jpg';
 
 export const Description = ({ data,cast }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
   
 
   return (
@@ -19,7 +17,7 @@ export const Description = ({ data,cast }) => {
           <img
             className="object-cover l h-full w-full   lg:rounded-2xl   "
             src= {data.poster_path
-            ? `${BASE_URL}${data.poster_path}`:"https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"}
+            ? `${BASE_URL}${data.poster_path}`:img}
             alt=""
           />
         </div>

@@ -5,7 +5,7 @@ const Ratings = ({ data }) => {
 
   return (
     <>
-      <div className="  bg-[#f6f5fc2a] rounded-2xl  py-4 lg:w-[80%] ps-4  ">
+      <div className="  bg-[#f6f5fc0e] rounded-2xl  py-4 lg:w-[80%] ps-4 shadow-[0px_1px_8px_0px_#4a5568] lg:mt-0 mt-3 ">
         <p className=" lg:text-3xl   text-2xl  font-[Helvetica] lg:ps-10 ">
           {data.original_name || data.title || data.original_title }
         </p>
