@@ -1,7 +1,7 @@
 import React from "react";
 
-const DetailBackground = ({data}) => {
-    const BASE_URL = "https://image.tmdb.org/t/p/original";
+const DetailBackground = ({ data }) => {
+  const BASE_URL = "https://image.tmdb.org/t/p/original";
   return (
     <>
       <div className=" ">

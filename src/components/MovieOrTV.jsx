@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import SearchData from "./SearchData";
 import CardSkeleton from "../Loaders/CardSkeleton";
 
-const MoviesList = () => {
+const MovieOrTV = () => {
   const { query } = useParams();
   const { ref, inView } = useInView({ threshold: [0.5] });
   const [allData, setAlldata] = useState([]);
@@ -55,4 +55,4 @@ const MoviesList = () => {
   );
 };
 
-export default MoviesList;
+export default MovieOrTV;

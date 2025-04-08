@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { replace, useNavigate } from "react-router-dom";
 import useFetch from "../../utils/useFetch";
-import img from '../../images/default_poster.jpg';
+import img from "../../images/default_poster.jpg";
 const BASE_URL = "https://image.tmdb.org/t/p/w500";
-
 
 function Card({ data, fromsearch, media }) {
   const navigate = useNavigate();
@@ -11,12 +10,13 @@ function Card({ data, fromsearch, media }) {
   const filteredGenres = gdata?.genres?.filter((g) =>
     data?.genre_ids?.includes(g.id)
   );
- 
 
   return (
     <>
       <div
-        className={`relative cursor-pointer   ${fromsearch && "overflow-hidden"}`}
+        className={`relative cursor-pointer   ${
+          fromsearch && "overflow-hidden"
+        }`}
         key={data.id}
         onClick={() => navigate(`/${media}/${data?.id}`, { replace: true })}
       >
@@ -32,11 +32,7 @@ function Card({ data, fromsearch, media }) {
             className={`object-cover  ${
               !fromsearch ? "h-full " : "h-full w-full"
             } `}
-            src={
-              data.poster_path
-                ? `${BASE_URL}${data.poster_path}`
-                : img
-            }
+            src={data.poster_path ? `${BASE_URL}${data.poster_path}` : img}
             alt=""
           />
         </div>

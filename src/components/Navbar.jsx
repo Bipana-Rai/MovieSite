@@ -5,8 +5,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [value, setValue] = useState("");
-  const movie="movie";
-  const tv="tv";
+  const movie = "movie";
+  const tv = "tv";
   const handleSearch = () => {
     show ? setShow(false) : setShow(true);
   };
@@ -26,7 +26,10 @@ const Navbar = () => {
           >
             Movies
           </p>
-          <p onClick={() => navigate(`/explore/${tv}`)} className="cursor-pointer">
+          <p
+            onClick={() => navigate(`/explore/${tv}`)}
+            className="cursor-pointer"
+          >
             Tvshows
           </p>
           <i

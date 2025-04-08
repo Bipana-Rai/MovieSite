@@ -15,17 +15,12 @@ const Home = () => {
       console.error("Backdrop path not found");
     }
   }, [data]);
-  
 
   return (
     <>
       <section className=" lg:px-12 px-5  ">
         <div className="  relative lg:h-[90vh] h-[60vh] ">
-          <img
-            className=" object-cover w-full h-full "
-            src={bgImage}
-            alt=""
-          />
+          <img className=" object-cover w-full h-full " src={bgImage} alt="" />
           <div className=" inset-0 text-white text-center absolute flex flex-col justify-center items-center bg-[#00000079]  h-full ">
             <div className="w-80 md:w-full">
               <p className="lg:text-3xl text-xl">Welcome</p>
@@ -34,7 +29,7 @@ const Home = () => {
                 now.
               </p>
             </div>
-            <SearchBar  />
+            <SearchBar />
           </div>
         </div>
       </section>

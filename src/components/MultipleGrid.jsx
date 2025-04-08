@@ -6,7 +6,6 @@ function MultipleGrid() {
   const [isDay, setIsDay] = useState("movie");
   const [ismovie, setIsMovie] = useState("movie");
   const [ismovie1, setIsMovie1] = useState("movie");
-  
 
   const { error, data, loading } = useFetch(`/trending/${isDay}/day`);
   const {
@@ -34,7 +33,6 @@ function MultipleGrid() {
         h2={"TV SHOWS"}
         isLeft={isDay}
         setIsLeft={setIsDay}
-        
       />
       <Grid
         data={Pdata}
@@ -48,7 +46,6 @@ function MultipleGrid() {
         h2={"TV SHOWS"}
         isLeft={ismovie}
         setIsLeft={setIsMovie}
-       
       />
       <Grid
         data={Rdata}
@@ -62,7 +59,6 @@ function MultipleGrid() {
         h2={"TV SHOWS"}
         isLeft={ismovie1}
         setIsLeft={setIsMovie1}
-       
       />
     </>
   );
