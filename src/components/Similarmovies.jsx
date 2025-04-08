@@ -1,12 +1,14 @@
-import React from 'react'
-import Grid from './Grid'
+import React from "react";
+import Grid from "./Grid";
 
-function Similarmovies({smovies,title,media}) {
+function Similarmovies({ smovies, title, media }) {
   return (
-  <>
-  <Grid data={smovies} fromSimilar={true} title={title} media={media}/>
-  </>
-  )
+    <>
+      {smovies?.results?.length > 0 && (
+        <Grid data={smovies} fromSimilar={true} title={title} media={media} />
+      )}
+    </>
+  );
 }
 
-export default Similarmovies
+export default Similarmovies;

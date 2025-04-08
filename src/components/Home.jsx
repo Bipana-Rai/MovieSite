@@ -23,9 +23,9 @@ const Home = () => {
   return (
     <>
       <section className=" lg:px-12 px-5  ">
-        <div className="  relative lg:h-[90vh] h-[60vh] bg-[#695222] ">
+        <div className="  relative lg:h-[90vh] h-[60vh] ">
           <img
-            className=" object-cover w-full h-full rounded-xl p-1"
+            className=" object-cover w-full h-full "
             src={bgImage}
             alt=""
           />

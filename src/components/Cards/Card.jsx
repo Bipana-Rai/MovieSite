@@ -1,15 +1,15 @@
 import React from "react";
 import { replace, useNavigate } from "react-router-dom";
-import useFetch from "../utils/useFetch";
+import useFetch from "../../utils/useFetch";
 const BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 function Card({ data, fromsearch, media }) {
   const navigate = useNavigate();
-
   const { data: gdata } = useFetch(`/genre/${media}/list`);
   const filteredGenres = gdata?.genres?.filter((g) =>
-    data.genre_ids.includes(g.id)
+    data?.genre_ids?.includes(g.id)
   );
+  
 
   return (
     <>
@@ -20,14 +20,16 @@ function Card({ data, fromsearch, media }) {
       >
         <div
           className={`overflow-hidden ${
-            !fromsearch ? "w-40 sm:w-55" : "w-full"
-          }  bg-[#695222] p-1 `}
+            !fromsearch ? "w-40 h-60 sm:w-55 sm:h-80 " : "w-full h-60 sm:h-80 "
+          }  bg-[#2222224f] p-1 `}
         >
-          <div className="h-10 w-10 lg:h-13 lg:w-13 flex items-center justify-center  rounded-[50%] absolute bg-orange-400  border-3 border-[#695222]   right-0 text-white">
-            {data.vote_average.toFixed(1)}
+          <div className="h-10 w-10 lg:h-13 lg:w-13 flex items-center justify-center  rounded-[50%] absolute lg:bottom-12  right-0  bottom-10 bg-orange-600 text-white">
+            {data?.vote_average?.toFixed(1)}
           </div>
           <img
-            className=" object-cover rounded-2xl"
+            className={`object-cover  ${
+              !fromsearch ? "h-full " : "h-full w-full"
+            } `}
             src={
               data.poster_path
                 ? `${BASE_URL}${data.poster_path}`
@@ -36,13 +38,19 @@ function Card({ data, fromsearch, media }) {
             alt=""
           />
         </div>
-        <div className="   text-white w-40  sm:w-55  overflow-hidden ">
-          <p className="lg:text-center">{data.original_title  || data.title ||  data.name}</p>
-          <div className="lg:flex items-center justify-center  ">
-            {filteredGenres?.map((genre, index) => (
+        <div
+          className={`text-white  lg:py-1 lg:text-[15px] text-[13px]  overflow-hidden bg-[#2222224f] ${
+            !fromsearch ? "w-40  sm:w-55 " : " w-full"
+          } `}
+        >
+          <p className="lg:text-center font-bold lg:ps-2">
+            {data.original_title || data.title || data.name}
+          </p>
+          <div className="lg:flex items-center justify-center ">
+            {filteredGenres?.slice(0, 2).map((genre, index) => (
               <span key={genre.id}>
                 {genre.name}
-                {index < filteredGenres.length - 1 && ", "}
+                {index < 1 && ", "}
               </span>
             ))}
           </div>

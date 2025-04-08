@@ -4,6 +4,7 @@ import React from "react";
 function Video({ url, name }) {
   return (
     <>
+    
       <div>
         <iframe
           className="h-60 w-80  "

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "./Card";
+import Card from "./Cards/Card";
 import Toggle from "./Toggle";
 
 function Grid({

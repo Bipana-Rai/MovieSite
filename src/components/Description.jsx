@@ -14,15 +14,16 @@ export const Description = ({ data,cast }) => {
   return (
     <>
       <DetailBackground data={data} />
-      <div className="lg:grid lg:grid-cols-4 gap-2 lg:mt-[6%]  lg:px-12 px-5 py-4 ">
-        <div className="lg:col-span-1  flex justify-center">
+      <div className="lg:grid lg:grid-cols-4 gap-2 lg:mt-[6%] lg:ms-[10%]  lg:px-12 px-5 py-4   ">
+        <div className="lg:col-span-1  flex justify-center  ">
           <img
-            className="object-cover h-full w-full   lg:rounded-2xl  "
-            src={`${BASE_URL}${data.poster_path}`}
+            className="object-cover l h-full w-full   lg:rounded-2xl   "
+            src= {data.poster_path
+            ? `${BASE_URL}${data.poster_path}`:"https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"}
             alt=""
           />
         </div>
-        <div className="lg:col-span-3   text-white lg:px-10">
+        <div className="lg:col-span-3  lg:px-10  text-white ">
           <Ratings data={data} />
           <Plot data={data} cast= {cast}/>
         </div>

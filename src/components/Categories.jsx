@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "../utils/useFetch";
-const Categories = ({ setSelectedCategory }) => {
-  const { data: gdata } = useFetch(`/genre/movie/list`);
+import { OptionButton } from "./OptionButton";
+const Categories = ({ setSelectedCategory, media, setSortBy }) => {
+  const { data: gdata } = useFetch(`/genre/${media}/list`);
+
   const sort = [
-    "Popularity Descending",
-    "Popularity Ascending",
-    "Rating Descending",
-    "Rating Ascending",
+    { id: "popularity.desc  ", name: "Popularity Descending" },
+    { id: "popularity.asc   ", name: "Popularity Ascending" },
+    { id: "vote_average.desc", name: "Rating Descending" },
+    { id: "vote_average.asc", name: "Rating Ascending" },
   ];
+  useEffect(() => {
+    setSelectedCategory(null);
+    setSortBy(null);
+  }, [media]);
 
   return (
     <>
@@ -16,42 +22,13 @@ const Categories = ({ setSelectedCategory }) => {
           <p className="md:text-3xl text-xl font-bold">Explore Movies</p>
         </div>
         <div className="lg:flex grid gap-4 col-span-2  lg:h-10 lg:justify-self-end mt-4 lg:my-0 ">
-          <div className=" col-span-1">
-            {/* <button popovertarget="my-popover">Open Popover</button>
-            <div popover="manual" id="my-popover">
-              Greetings, one and all!
-            </div> */}
-
-            <select
-              className="hide-scrollbar  text-center outline-0 bg-blue-900 w-full   lg:w-[250px]  h-[35px] rounded-3xl px-3  "
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              <option value="" hidden>
-                Select genres
-              </option>
-              {gdata?.genres?.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className=" col-span-1 overflow-visible">
-          <select
-            className="  text-center outline-0 bg-blue-900  w-full  lg:w-[250px]  h-[35px] rounded-3xl z-10"
-           onfocus='this.size=11' onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="" hidden>
-              Sort by
-            </option>
-            {sort.map((item, i) => (
-              <option key={i} value={i}>
-                {item}
-              </option>
-            ))}
-          </select>
+          <OptionButton
+            data={gdata?.genres}
+            setSelectedCategory={setSelectedCategory}
+            title={"Select genres"}
+          />
+          <OptionButton title={"Sort by"} data={sort} setSortBy={setSortBy} />
         </div>
-      </div>
       </div>
     </>
   );

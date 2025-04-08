@@ -17,7 +17,7 @@ function SearchBar() {
             type="text"
             value={value}
             placeholder="Search for movies and shows..."
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) =>setValue(e.target.value)}
           />
           <button
             className="  bg-gradient-to-r from-yellow-500 to-orange-500 rounded-r-xl px-4 "

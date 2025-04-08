@@ -1,12 +1,19 @@
-import React from 'react'
-import Grid from './Grid'
+import React from "react";
+import Grid from "./Grid";
 
-const Recommendation = ({recommend,media}) => {
+const Recommendation = ({ recommend, media }) => {
   return (
     <>
-    <Grid data={recommend} title={"Recommendations"} fromSimilar={true} media={media}/>
+      {recommend?.results?.length > 0 && (
+        <Grid
+          data={recommend}
+          title={"Recommendations"}
+          fromSimilar={true}
+          media={media}
+        />
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Recommendation
+export default Recommendation;
