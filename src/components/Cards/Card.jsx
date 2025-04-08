@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { replace, useNavigate } from "react-router-dom";
 import useFetch from "../../utils/useFetch";
-import img from "../../images/default_poster.jpg";
+import img from "../images/default_poster.jpg";
 const BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 function Card({ data, fromsearch, media }) {
