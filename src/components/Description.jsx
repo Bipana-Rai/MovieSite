@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Ratings from "./Ratings";
 import Plot from "./Plot";
 import DetailBackground from "./DetailBackground";
-import img from "./images/default_poster.jpg";
+import img from "/default_poster.jpg";
 
 export const Description = ({ data, cast }) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";

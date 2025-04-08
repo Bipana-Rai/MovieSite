@@ -1,5 +1,5 @@
 import React from "react";
-import img from "./images/default_profile.jpg";
+import img from "/default_profile.jpg";
 function Topcast({ cast }) {
   const BASE_URL = "https://image.tmdb.org/t/p/w500";
 
