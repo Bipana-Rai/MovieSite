@@ -1,11 +1,10 @@
 import React from "react";
-import img from "./images/default_Profile.jpg";
+import img from "./images/default_profile.jpg";
 function Topcast({ cast }) {
   const BASE_URL = "https://image.tmdb.org/t/p/w500";
 
   return (
     <>
-      {/* {cast?.results?.length > 0 && ( */}
       <div className="lg:px-12 px-5 py-4  ">
         <p className="text-white lg:text-4xl text-2xl">Top Cast</p>
         <div className="flex  overflow-x-auto  gap-4 hide-scrollbar pt-5   ">
@@ -30,7 +29,6 @@ function Topcast({ cast }) {
           ))}
         </div>
       </div>
-      {/* )} */}
     </>
   );
 }
